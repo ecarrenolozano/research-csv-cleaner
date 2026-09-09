@@ -1,5 +1,7 @@
 # Architecture Decision Records
 
-No standalone ADR is warranted for ARCH-001. The local single-process structure is small and reversible and introduces no material internal boundary. The developer-selected CLI is recorded as DEC-001 in [the root architecture](../architecture.md#developer-interface-decision).
+ARCH-002 uses one material ADR:
 
-Future significant, long-lived, risky, or hard-to-reverse decisions should receive individual ADRs. ARCH-001 was approved by Edwin Carreño, Software developer, on 2026-09-09, with no blocking feedback.
+- [ADR-001: Local dual-interface application](ADR-001-local-dual-interface-application.md)
+
+ARCH-001's CLI-only decision is superseded by ARCH-002 for active CR-0001 behavior. The CLI remains supported.

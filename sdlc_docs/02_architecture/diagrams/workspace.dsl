@@ -1,11 +1,13 @@
-workspace "Research CSV Cleaner" "Local research CSV cleaning architecture" {
+workspace "Research CSV Cleaner" "Local research CSV validation architecture" {
     model {
-        researcher = person "Researcher" "Cleans experiment data."
-        cleaner = softwareSystem "Research CSV Cleaner" "Cleans local research CSV files." {
-            cli = container "CLI Application" "Processes a local CSV cleaning run." "Python"
+        researcher = person "Researcher" "Validates experiment data."
+        cleaner = softwareSystem "Research CSV Cleaner" "Validates local research CSV files." {
+            cli = container "CLI Application" "Runs local command-line CSV validation." "Python"
+            streamlit = container "Streamlit Interface" "Runs local upload, preview, count, and download workflow." "Python + Streamlit"
         }
-        researcher -> cleaner "Cleans experiment data"
-        researcher -> cli "Cleans experiment data via CLI"
+        researcher -> cleaner "Validates experiment data"
+        researcher -> cli "Uses command line"
+        researcher -> streamlit "Uses local interface"
     }
     views {
         systemContext cleaner "SystemContext" {

@@ -3,27 +3,27 @@
 - **Structurizr container identifier:** cli
 - **Container folder:** cli-application
 - **Decision status:** Confirmed architect decision
-- **Evidence basis:** REQ-0001; CAP-001–CAP-005; DEC-001 in the root architecture.
+- **Evidence basis:** REQ-0002; CAP-006, CAP-007, CAP-008, CAP-009, CAP-010, CAP-012, CAP-017; ADR-001.
 
 ## Container Identity
 
-AE-002 is the single local Python execution container inside Research CSV Cleaner.
+AE-002 is the local command-line execution container inside Research CSV Cleaner.
 
 ## Purpose
 
-Clean one research CSV through the developer-selected minimal CLI.
+Validate one research CSV through the existing command-line workflow while producing CR-0001 row-preserving output.
 
 ## Responsibilities
 
-Read CSV, validate the required numeric column, filter invalid rows, write cleaned CSV, and report the removed-row count.
+Read CSV input, accept the selected numeric column from CLI arguments, apply shared validation semantics, preserve all rows, add detailed `validation_errors` values for invalid rows, write the resulting CSV, and report validation-error row count.
 
 ## Covered Capabilities and Stories
 
-CAP-001 / US-0001; CAP-002 / US-0002; CAP-003 / US-0003; CAP-004 / US-0004; CAP-005 / US-0005.
+CAP-006 / US-0006; CAP-007 / US-0007; CAP-008 / US-0008; CAP-009 / US-0009; CAP-010 / US-0010; CAP-012 / US-0012; CAP-017 / US-0017.
 
 ## Interfaces Provided
 
-DEC-001: CLI accepting input CSV path, output CSV path, and required numeric column name. Exact invocation spelling is deferred. Missing-column error and removed-row report follow US-0002 and US-0005.
+CLI accepting the existing input shape: input CSV path, output CSV path, and selected numeric column name. The output behavior follows REQ-0002 instead of the superseded row-removal behavior.
 
 ## Interfaces Consumed
 
@@ -31,36 +31,36 @@ Local filesystem and Python runtime facilities. No external services.
 
 ## Data Ownership
 
-The researcher supplies local files. The application reads the input and produces cleaned output; it owns only per-run working data, with no independent persistent store.
+The researcher supplies local files. The CLI reads the input file, creates a resulting CSV, and owns only per-run working data.
 
 ## Dependencies
 
-Internal architecture constraint: Python standard library for CLI argument handling, CSV I/O, and numeric validation. Exact implementation APIs remain for implementation design.
+Python runtime and product-owned validation logic. Exact standard-library or package use belongs to implementation design.
 
 ## Internal Building Blocks
 
-I/O, numeric classification, filtering, and accounting are internal responsibilities. No material internal boundary requires a Component view.
+Argument handling, CSV reading/writing, validation, annotation, and counting are internal responsibilities. No material internal boundary requires a Component view.
 
 ## Runtime Responsibilities
 
-Verify column presence before output creation. Exclude missing, empty, unparseable, NaN, and infinite numeric values. Report excluded-row count after cleaning. See root runtime view for approved behavior provenance.
+Verify selected-column presence before producing a result. Preserve all input rows. Annotate invalid rows with detailed explanations for missing, empty, unparseable, NaN, or infinite selected-column values. Report the number of rows containing validation errors.
 
 ## Quality Attributes
 
-Small, testable, understandable, as required by Project Context. No invented capacity target.
+Small, testable, understandable, with validation behavior consistent with the Streamlit Interface.
 
 ## Constraints
 
-Local individual-file operation; three CLI inputs; no GUI, database, or web service.
+Local individual-file operation; keep the existing CLI operational; no database, shared web service, or shared deployment infrastructure.
 
 ## Risks and Technical Debt
 
-Unspecified CSV and output-path edge cases require review before affected implementation; see root section 11. No accepted debt.
+Exact CLI text, output-path edge cases, CSV dialect, encoding, malformed-file behavior, and large-file handling remain unspecified beyond approved requirements.
 
 ## Related ADR
 
-None warranted. DEC-001 and the root architecture record the interface and simple structural rationale.
+ADR-001.
 
 ## Open Decisions
 
-No material architecture decisions remain. Detailed command syntax and code decomposition belong to implementation design.
+No material architecture decisions remain for this container.

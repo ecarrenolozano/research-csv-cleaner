@@ -17,7 +17,7 @@
       "source": "ecarrenolozano/ai-sdlc-skills",
       "sourceType": "github",
       "skillPath": "skills/c-manage-product-requirements/SKILL.md",
-      "computedHash": "80f9054cab2a5b12ea0ab36dd2186d4e5d78fae82c5a89abb906805052476463"
+      "computedHash": "6141dd69e69813921d1586146677bfffe6f2c73524284174001123060b60082c"
     },
     "create-github-project-board": {
       "source": "ecarrenolozano/ai-sdlc-skills",
@@ -29,13 +29,13 @@
       "source": "ecarrenolozano/ai-sdlc-skills",
       "sourceType": "github",
       "skillPath": "skills/d-design-product-architecture/SKILL.md",
-      "computedHash": "bd6fbe467202ed2ba2e84c2e2151e15f90bfe44b7108ecca6364c898ab72c023"
+      "computedHash": "beb1be5bc6544afe68986f9f987d44fa882acc5f1dba6d4fb629ea8769b6a9ee"
     },
     "e-sync-repository-requirements": {
       "source": "ecarrenolozano/ai-sdlc-skills",
       "sourceType": "github",
       "skillPath": "skills/e-sync-repository-requirements/SKILL.md",
-      "computedHash": "129c130547ab62cda10326484eacb8cf76d2373ae62d9cb627da042e5455a77f"
+      "computedHash": "5c01d724828f02b3c20475f41f7ed54ec6cac2b3bfba6af487f97bc9bc384717"
     },
     "f-establish-technical-foundation": {
       "source": "ecarrenolozano/ai-sdlc-skills",
@@ -59,7 +59,7 @@
       "source": "ecarrenolozano/ai-sdlc-skills",
       "sourceType": "github",
       "skillPath": "skills/i-validate-user-story-completion/SKILL.md",
-      "computedHash": "f32b21043bebbb13424337304461ee7a4bd131e2354c09ea811be01ad2bd03dd"
+      "computedHash": "3eadf13e149e2d252c8764771c46c224d76d82f6b9929a64324d371890f7c450"
     },
     "j-prepare-release-deployment": {
       "source": "ecarrenolozano/ai-sdlc-skills",
@@ -77,7 +77,7 @@
       "source": "ecarrenolozano/ai-sdlc-skills",
       "sourceType": "github",
       "skillPath": "skills/sdlc-orchestrate-workflow/SKILL.md",
-      "computedHash": "e4238874ab85a470e396ebb88d0c68a8b620ebb906baa7dd82f6e74735926aa0"
+      "computedHash": "58ac537a0d64b5d05427d2dae08c496335c96efb158ecfaad5c2776cee803e86"
     }
   }
 }

@@ -5,6 +5,7 @@
 - **Document state:** Closed
 - **Created:** 2026-09-09
 - **Last updated:** 2026-09-09
+- **Active change:** CR-0001
 
 ## Source Metadata
 
@@ -12,6 +13,7 @@
 |---|---|---|---|---|
 | [informal_project_request.md](sources/informal_project_request.md) | Informal request supplied in chat | 2026-09-09 | Requester | Original requirement preserved verbatim. |
 | Direct chat clarification | Stakeholder answers supplied in chat | 2026-09-09 | Requester | Answers recorded for critical questions 1-3. |
+| [change_request_cr_0001.md](sources/change_request_cr_0001.md) | Change request supplied in chat | 2026-09-09 | Requester | Requests preservation of invalid rows with validation errors, adds a Streamlit interface, and keeps the CLI operational. |
 
 ## Initial Understanding
 
@@ -49,9 +51,47 @@ The first version is successful if it can read a CSV file, validate one required
 
 ## Contradictions
 
-None identified.
+CR-0001 contradicts the previously approved first-release behavior and scope in these ways:
 
-## Readiness Approval
+- The initial request said invalid rows should be removed; CR-0001 says invalid rows must remain in the output CSV.
+- The initial request said the tool should report how many rows were removed; CR-0001 says researchers need to see how many rows contain validation errors.
+- The initial request excluded a GUI; CR-0001 requests a small Streamlit interface.
+
+These contradictions require updated Project Context, Product Requirements, Product Architecture, acceptance criteria, validation tests, and implementation assumptions before code changes begin.
+
+## Change Request CR-0001
+
+### Initial Understanding
+
+The requester wants the existing Research CSV Cleaner to preserve every input row in the generated CSV. Rows with invalid values in the selected numeric column should be annotated with a `validation_errors` column that explains the detected problem instead of being removed.
+
+Researchers also need a small local Streamlit interface. The interface should allow CSV upload, numeric-column selection, validated-data preview, a count of rows containing validation errors, and download of the resulting CSV. The already implemented CLI must remain operational.
+
+The change is a material product and architecture change. It supersedes the row-removal behavior for future work while preserving the initial release artifacts as approved history.
+
+### Critical Questions
+
+No blocking project-level questions are currently identified. Detailed acceptance-criterion wording belongs to Product Requirements after this change-intake record is approved.
+
+### Impact
+
+- Reopen Project Context because the approved context currently describes row removal and excludes GUI scope.
+- Create a new product requirement or increment requirement rather than rewriting approved REQ-0001 in place.
+- Retire or supersede the row-removal story behavior for future output.
+- Add acceptance criteria for preserving all rows, populating `validation_errors`, reporting validation-error row count, Streamlit upload, numeric-column selection, preview, and download.
+- Rework architecture because Streamlit introduces a local UI path and at least one runtime dependency.
+- Update unit, integration, and BDD validation coverage before implementation is considered complete.
+
+## Initial Release Readiness Approval
+
+- [x] Ready
+- [ ] Not Ready
+- **Approver:** Edwin Carreño
+- **Role:** Software developer
+- **Approval date:** 2026-09-09
+- **Blocking Issues:** None
+
+## CR-0001 Readiness Approval
 
 - [x] Ready
 - [ ] Not Ready

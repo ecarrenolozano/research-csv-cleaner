@@ -1,27 +1,33 @@
 {
   "configuration" : { },
-  "description" : "Local research CSV cleaning architecture",
+  "description" : "Local research CSV validation architecture",
   "documentation" : { },
   "id" : 1,
-  "lastModifiedDate" : "2026-09-09T04:22:12Z",
+  "lastModifiedDate" : "2026-09-09T15:02:53Z",
   "model" : {
     "people" : [ {
-      "description" : "Cleans experiment data.",
+      "description" : "Validates experiment data.",
       "id" : "1",
       "name" : "Researcher",
       "properties" : {
         "structurizr.dsl.identifier" : "researcher"
       },
       "relationships" : [ {
-        "description" : "Cleans experiment data",
+        "description" : "Validates experiment data",
         "destinationId" : "2",
-        "id" : "4",
+        "id" : "5",
         "sourceId" : "1",
         "tags" : "Relationship"
       }, {
-        "description" : "Cleans experiment data via CLI",
+        "description" : "Uses command line",
         "destinationId" : "3",
-        "id" : "5",
+        "id" : "6",
+        "sourceId" : "1",
+        "tags" : "Relationship"
+      }, {
+        "description" : "Uses local interface",
+        "destinationId" : "4",
+        "id" : "7",
         "sourceId" : "1",
         "tags" : "Relationship"
       } ],
@@ -29,7 +35,7 @@
     } ],
     "softwareSystems" : [ {
       "containers" : [ {
-        "description" : "Processes a local CSV cleaning run.",
+        "description" : "Runs local command-line CSV validation.",
         "documentation" : { },
         "id" : "3",
         "name" : "CLI Application",
@@ -38,8 +44,18 @@
         },
         "tags" : "Element,Container",
         "technology" : "Python"
+      }, {
+        "description" : "Runs local upload, preview, count, and download workflow.",
+        "documentation" : { },
+        "id" : "4",
+        "name" : "Streamlit Interface",
+        "properties" : {
+          "structurizr.dsl.identifier" : "streamlit"
+        },
+        "tags" : "Element,Container",
+        "technology" : "Python + Streamlit"
       } ],
-      "description" : "Cleans local research CSV files.",
+      "description" : "Validates local research CSV files.",
       "documentation" : { },
       "id" : "2",
       "name" : "Research CSV Cleaner",
@@ -51,8 +67,8 @@
   },
   "name" : "Research CSV Cleaner",
   "properties" : {
-    "structurizr.inspection.error" : "5",
-    "structurizr.dsl" : "d29ya3NwYWNlICJSZXNlYXJjaCBDU1YgQ2xlYW5lciIgIkxvY2FsIHJlc2VhcmNoIENTViBjbGVhbmluZyBhcmNoaXRlY3R1cmUiIHsKICAgIG1vZGVsIHsKICAgICAgICByZXNlYXJjaGVyID0gcGVyc29uICJSZXNlYXJjaGVyIiAiQ2xlYW5zIGV4cGVyaW1lbnQgZGF0YS4iCiAgICAgICAgY2xlYW5lciA9IHNvZnR3YXJlU3lzdGVtICJSZXNlYXJjaCBDU1YgQ2xlYW5lciIgIkNsZWFucyBsb2NhbCByZXNlYXJjaCBDU1YgZmlsZXMuIiB7CiAgICAgICAgICAgIGNsaSA9IGNvbnRhaW5lciAiQ0xJIEFwcGxpY2F0aW9uIiAiUHJvY2Vzc2VzIGEgbG9jYWwgQ1NWIGNsZWFuaW5nIHJ1bi4iICJQeXRob24iCiAgICAgICAgfQogICAgICAgIHJlc2VhcmNoZXIgLT4gY2xlYW5lciAiQ2xlYW5zIGV4cGVyaW1lbnQgZGF0YSIKICAgICAgICByZXNlYXJjaGVyIC0+IGNsaSAiQ2xlYW5zIGV4cGVyaW1lbnQgZGF0YSB2aWEgQ0xJIgogICAgfQogICAgdmlld3MgewogICAgICAgIHN5c3RlbUNvbnRleHQgY2xlYW5lciAiU3lzdGVtQ29udGV4dCIgewogICAgICAgICAgICBpbmNsdWRlICoKICAgICAgICAgICAgYXV0b0xheW91dCBscgogICAgICAgIH0KICAgICAgICBjb250YWluZXIgY2xlYW5lciAiQ29udGFpbmVycyIgewogICAgICAgICAgICBpbmNsdWRlICoKICAgICAgICAgICAgYXV0b0xheW91dCBscgogICAgICAgIH0KICAgICAgICB0aGVtZSBkZWZhdWx0CiAgICB9Cn0=",
+    "structurizr.inspection.error" : "6",
+    "structurizr.dsl" : "d29ya3NwYWNlICJSZXNlYXJjaCBDU1YgQ2xlYW5lciIgIkxvY2FsIHJlc2VhcmNoIENTViB2YWxpZGF0aW9uIGFyY2hpdGVjdHVyZSIgewogICAgbW9kZWwgewogICAgICAgIHJlc2VhcmNoZXIgPSBwZXJzb24gIlJlc2VhcmNoZXIiICJWYWxpZGF0ZXMgZXhwZXJpbWVudCBkYXRhLiIKICAgICAgICBjbGVhbmVyID0gc29mdHdhcmVTeXN0ZW0gIlJlc2VhcmNoIENTViBDbGVhbmVyIiAiVmFsaWRhdGVzIGxvY2FsIHJlc2VhcmNoIENTViBmaWxlcy4iIHsKICAgICAgICAgICAgY2xpID0gY29udGFpbmVyICJDTEkgQXBwbGljYXRpb24iICJSdW5zIGxvY2FsIGNvbW1hbmQtbGluZSBDU1YgdmFsaWRhdGlvbi4iICJQeXRob24iCiAgICAgICAgICAgIHN0cmVhbWxpdCA9IGNvbnRhaW5lciAiU3RyZWFtbGl0IEludGVyZmFjZSIgIlJ1bnMgbG9jYWwgdXBsb2FkLCBwcmV2aWV3LCBjb3VudCwgYW5kIGRvd25sb2FkIHdvcmtmbG93LiIgIlB5dGhvbiArIFN0cmVhbWxpdCIKICAgICAgICB9CiAgICAgICAgcmVzZWFyY2hlciAtPiBjbGVhbmVyICJWYWxpZGF0ZXMgZXhwZXJpbWVudCBkYXRhIgogICAgICAgIHJlc2VhcmNoZXIgLT4gY2xpICJVc2VzIGNvbW1hbmQgbGluZSIKICAgICAgICByZXNlYXJjaGVyIC0+IHN0cmVhbWxpdCAiVXNlcyBsb2NhbCBpbnRlcmZhY2UiCiAgICB9CiAgICB2aWV3cyB7CiAgICAgICAgc3lzdGVtQ29udGV4dCBjbGVhbmVyICJTeXN0ZW1Db250ZXh0IiB7CiAgICAgICAgICAgIGluY2x1ZGUgKgogICAgICAgICAgICBhdXRvTGF5b3V0IGxyCiAgICAgICAgfQogICAgICAgIGNvbnRhaW5lciBjbGVhbmVyICJDb250YWluZXJzIiB7CiAgICAgICAgICAgIGluY2x1ZGUgKgogICAgICAgICAgICBhdXRvTGF5b3V0IGxyCiAgICAgICAgfQogICAgICAgIHRoZW1lIGRlZmF1bHQKICAgIH0KfQ==",
     "structurizr.inspection.info" : "0",
     "structurizr.inspection.ignore" : "0",
     "structurizr.inspection.warning" : "0"
@@ -79,13 +95,19 @@
         "id" : "3",
         "x" : 0,
         "y" : 0
+      }, {
+        "id" : "4",
+        "x" : 0,
+        "y" : 0
       } ],
       "externalSoftwareSystemBoundariesVisible" : false,
       "key" : "Containers",
       "name" : "Container View: Research CSV Cleaner",
       "order" : 2,
       "relationships" : [ {
-        "id" : "5"
+        "id" : "6"
+      }, {
+        "id" : "7"
       } ],
       "softwareSystemId" : "2"
     } ],
@@ -111,7 +133,7 @@
       "name" : "System Context View: Research CSV Cleaner",
       "order" : 1,
       "relationships" : [ {
-        "id" : "4"
+        "id" : "5"
       } ],
       "softwareSystemId" : "2"
     } ]
