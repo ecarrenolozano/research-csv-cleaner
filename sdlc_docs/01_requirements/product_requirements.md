@@ -13,7 +13,7 @@
 | Requirement | Requirement status | Stories | Story status | Source | Repository issues |
 |---|---|---|---|---|---|
 | REQ-0001 - Local research CSV cleaning | Superseded by CR-0001 | US-0001, US-0002, US-0003, US-0004, US-0005 | Superseded by CR-0001 | Prior approved Project Context v1.0 | Closed |
-| REQ-0002 - Local CSV validation with row preservation and Streamlit interface | Approved | US-0006, US-0007, US-0008, US-0009, US-0010, US-0011, US-0012, US-0013, US-0014, US-0015, US-0016, US-0017 | Approved | `sdlc_docs/00_inception/project_context.md` CR-0001; stakeholder clarification in chat on 2026-09-09 | Not created |
+| REQ-0002 - Local CSV validation with row preservation and Streamlit interface | Approved | US-0006, US-0007, US-0008, US-0009, US-0010, US-0011, US-0012, US-0013, US-0014, US-0015, US-0016, US-0017 | Approved | `sdlc_docs/00_inception/project_context.md` CR-0001; stakeholder clarification in chat on 2026-09-09 | Created |
 
 ### Source Statement Coverage Register
 
@@ -223,8 +223,8 @@ Then the tool reports the number of rows removed.
 - **Source:** `sdlc_docs/00_inception/project_context.md`
 - **Evidence or basis:** Approved CR-0001 Project Context sections 8, 11, 12, and 17; stakeholder clarification in chat on 2026-09-09 that `validation_errors` should include a detailed explanation about each invalid numeric value.
 - **Imported classification:** Not applicable
-- **Repository representation:** Not created
-- **Repository issue:** Not created
+- **Repository representation:** Created
+- **Repository issue:** Created
 - **Description:** The CR-0001 update must let a researcher validate one selected numeric column in an individual CSV file, preserve every input row in the resulting CSV, annotate invalid rows with validation-error explanations, report or display how many rows contain validation errors, provide a small Streamlit interface for upload, selection, preview, and download, and keep the existing CLI operational.
 - **Approved by:** Edwin Carreño
 - **Reviewer role or responsibility:** Software developer
@@ -237,7 +237,7 @@ Then the tool reports the number of rows removed.
 - **Source or evidence basis:** CAP-006; approved CR-0001 Project Context section 12.
 - **Covered scope IDs:** CAP-006
 - **Atomicity:** Single observable outcome
-- **Repository issue:** Not created
+- **Repository issue:** Created
 
 As a researcher
 I want the tool to read a CSV file
@@ -257,7 +257,7 @@ Then the tool reads the CSV file for validation.
 - **Source or evidence basis:** CAP-007; approved CR-0001 Project Context section 12; prior approved invalid numeric value clarification.
 - **Covered scope IDs:** CAP-007
 - **Atomicity:** Single observable outcome
-- **Repository issue:** Not created
+- **Repository issue:** Created
 
 As a researcher
 I want the tool to validate one selected numeric column
@@ -284,7 +284,7 @@ And the tool does not create a resulting CSV.
 - **Source or evidence basis:** CAP-008; approved CR-0001 Project Context section 12.
 - **Covered scope IDs:** CAP-008
 - **Atomicity:** Single observable outcome
-- **Repository issue:** Not created
+- **Repository issue:** Created
 
 As a researcher
 I want the resulting CSV to keep every input row
@@ -304,7 +304,7 @@ Then the resulting CSV contains every input row.
 - **Source or evidence basis:** CAP-009; approved CR-0001 Project Context section 12; stakeholder clarification in chat on 2026-09-09 that `validation_errors` should include a detailed explanation about each invalid numeric value.
 - **Covered scope IDs:** CAP-009
 - **Atomicity:** Single observable outcome
-- **Repository issue:** Not created
+- **Repository issue:** Created
 
 As a researcher
 I want invalid rows to include validation-error explanations
@@ -336,7 +336,7 @@ Then each valid row has no error explanation in the `validation_errors` column.
 - **Source or evidence basis:** CAP-010; approved CR-0001 Project Context section 12.
 - **Covered scope IDs:** CAP-010
 - **Atomicity:** Single observable outcome
-- **Repository issue:** Not created
+- **Repository issue:** Created
 
 As a researcher
 I want the tool to write the resulting CSV
@@ -356,7 +356,7 @@ Then the tool writes a resulting CSV file.
 - **Source or evidence basis:** CAP-011; approved CR-0001 Project Context section 12.
 - **Covered scope IDs:** CAP-011
 - **Atomicity:** Single observable outcome
-- **Repository issue:** Not created
+- **Repository issue:** Created
 
 As a researcher
 I want to download the resulting CSV from the Streamlit interface
@@ -376,7 +376,7 @@ Then the interface provides the resulting CSV for download.
 - **Source or evidence basis:** CAP-012; approved CR-0001 Project Context section 12.
 - **Covered scope IDs:** CAP-012
 - **Atomicity:** Single observable outcome
-- **Repository issue:** Not created
+- **Repository issue:** Created
 
 As a researcher
 I want the CLI to report how many rows contain validation errors
@@ -396,7 +396,7 @@ Then the CLI reports the number of rows containing validation errors.
 - **Source or evidence basis:** CAP-013; approved CR-0001 Project Context section 12.
 - **Covered scope IDs:** CAP-013
 - **Atomicity:** Single observable outcome
-- **Repository issue:** Not created
+- **Repository issue:** Created
 
 As a researcher
 I want the Streamlit interface to display how many rows contain validation errors
@@ -416,7 +416,7 @@ Then the interface displays the number of rows containing validation errors.
 - **Source or evidence basis:** CAP-014; approved CR-0001 Project Context section 12.
 - **Covered scope IDs:** CAP-014
 - **Atomicity:** Single observable outcome
-- **Repository issue:** Not created
+- **Repository issue:** Created
 
 As a researcher
 I want to upload a CSV file through the Streamlit interface
@@ -436,7 +436,7 @@ Then the interface accepts the CSV file for validation.
 - **Source or evidence basis:** CAP-015; approved CR-0001 Project Context section 12.
 - **Covered scope IDs:** CAP-015
 - **Atomicity:** Single observable outcome
-- **Repository issue:** Not created
+- **Repository issue:** Created
 
 As a researcher
 I want to select the numeric column in the Streamlit interface
@@ -456,7 +456,7 @@ Then the interface uses that selected column for validation.
 - **Source or evidence basis:** CAP-016; approved CR-0001 Project Context section 12.
 - **Covered scope IDs:** CAP-016
 - **Atomicity:** Single observable outcome
-- **Repository issue:** Not created
+- **Repository issue:** Created
 
 As a researcher
 I want to preview validated data in the Streamlit interface
@@ -476,7 +476,7 @@ Then the interface previews the validated data.
 - **Source or evidence basis:** CAP-017; approved CR-0001 Project Context section 12.
 - **Covered scope IDs:** CAP-017
 - **Atomicity:** Single observable outcome
-- **Repository issue:** Not created
+- **Repository issue:** Created
 
 As a researcher
 I want the existing CLI to remain operational
