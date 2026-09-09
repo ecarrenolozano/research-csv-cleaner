@@ -1,38 +1,12 @@
 # Architecture
 
-This directory contains the product architecture baseline: architecture narrative, canonical Structurizr DSL model, per-container documentation, and Architecture Decision Records.
-
 **Primary skill:** `d-design-product-architecture`
 
-## Contents
+ARCH-001 is approved and Complete. Read [architecture.md](architecture.md) for the arc42 narrative, developer CLI decision, capability coverage, validation, and approval record.
 
-- `architecture.md`: authoritative architecture narrative.
-- `containers/`: one documentation folder per internal C4 container.
-- `diagrams/workspace.dsl`: canonical C4 model.
-- `diagrams/docker-compose.yml`: local Structurizr viewer.
-- `diagrams/images/`: optional exported SVG or PNG diagrams.
-- `adr/`: accepted and historical Architecture Decision Records.
+- [CLI Application](containers/cli-application/architecture.md): the single internal container.
+- [Canonical Structurizr model](diagrams/workspace.dsl): System Context (`SystemContext`) and Container (`Containers`) views.
+- [Viewer configuration](diagrams/docker-compose.yml): Docker Compose documentation viewer; see root narrative for start/stop instructions.
+- [ADR index](adr/README.md): rationale for retaining no standalone ADRs.
 
-The baseline always includes System Context and Container views. Component, Dynamic, and Deployment views are included only when they materially improve the architecture description.
-
-## How To View This Architecture
-
-These commands apply after `d-design-product-architecture` creates `diagrams/workspace.dsl` and `diagrams/docker-compose.yml`.
-
-From the repository root, run:
-
-```bash
-docker compose -f sdlc_docs/02_architecture/diagrams/docker-compose.yml up
-```
-
-Then open `http://localhost:8080`.
-
-Stop the local viewer with:
-
-```bash
-docker compose -f sdlc_docs/02_architecture/diagrams/docker-compose.yml down
-```
-
-Do not commit Structurizr runtime files from `diagrams/.structurizr/`. The directory must be excluded by `diagrams/.gitignore`.
-
-Do not skip required approval gates.
+No Component, Dynamic, or Deployment views are needed for this baseline. No images are exported. Structurizr runtime files are excluded by `diagrams/.gitignore`.

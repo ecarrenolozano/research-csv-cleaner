@@ -1,7 +1,5 @@
 # Architecture Decision Records
 
-Create decisions as `ADR-NNN-short-title.md`.
+No standalone ADR is warranted for ARCH-001. The local single-process structure is small and reversible and introduces no material internal boundary. The developer-selected CLI is recorded as DEC-001 in [the root architecture](../architecture.md#developer-interface-decision).
 
-Use ADRs for significant, long-lived, risky, expensive, or hard-to-reverse decisions.
-
-Do not copy blank ADR templates into this directory. Keep reusable templates inside the skill references only.
+Future significant, long-lived, risky, or hard-to-reverse decisions should receive individual ADRs. ARCH-001 was approved by Edwin Carreño, Software developer, on 2026-09-09, with no blocking feedback.

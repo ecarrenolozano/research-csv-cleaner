@@ -1,0 +1,119 @@
+{
+  "configuration" : { },
+  "description" : "Local research CSV cleaning architecture",
+  "documentation" : { },
+  "id" : 1,
+  "lastModifiedDate" : "2026-09-09T04:22:12Z",
+  "model" : {
+    "people" : [ {
+      "description" : "Cleans experiment data.",
+      "id" : "1",
+      "name" : "Researcher",
+      "properties" : {
+        "structurizr.dsl.identifier" : "researcher"
+      },
+      "relationships" : [ {
+        "description" : "Cleans experiment data",
+        "destinationId" : "2",
+        "id" : "4",
+        "sourceId" : "1",
+        "tags" : "Relationship"
+      }, {
+        "description" : "Cleans experiment data via CLI",
+        "destinationId" : "3",
+        "id" : "5",
+        "sourceId" : "1",
+        "tags" : "Relationship"
+      } ],
+      "tags" : "Element,Person"
+    } ],
+    "softwareSystems" : [ {
+      "containers" : [ {
+        "description" : "Processes a local CSV cleaning run.",
+        "documentation" : { },
+        "id" : "3",
+        "name" : "CLI Application",
+        "properties" : {
+          "structurizr.dsl.identifier" : "cli"
+        },
+        "tags" : "Element,Container",
+        "technology" : "Python"
+      } ],
+      "description" : "Cleans local research CSV files.",
+      "documentation" : { },
+      "id" : "2",
+      "name" : "Research CSV Cleaner",
+      "properties" : {
+        "structurizr.dsl.identifier" : "cleaner"
+      },
+      "tags" : "Element,Software System"
+    } ]
+  },
+  "name" : "Research CSV Cleaner",
+  "properties" : {
+    "structurizr.inspection.error" : "5",
+    "structurizr.dsl" : "d29ya3NwYWNlICJSZXNlYXJjaCBDU1YgQ2xlYW5lciIgIkxvY2FsIHJlc2VhcmNoIENTViBjbGVhbmluZyBhcmNoaXRlY3R1cmUiIHsKICAgIG1vZGVsIHsKICAgICAgICByZXNlYXJjaGVyID0gcGVyc29uICJSZXNlYXJjaGVyIiAiQ2xlYW5zIGV4cGVyaW1lbnQgZGF0YS4iCiAgICAgICAgY2xlYW5lciA9IHNvZnR3YXJlU3lzdGVtICJSZXNlYXJjaCBDU1YgQ2xlYW5lciIgIkNsZWFucyBsb2NhbCByZXNlYXJjaCBDU1YgZmlsZXMuIiB7CiAgICAgICAgICAgIGNsaSA9IGNvbnRhaW5lciAiQ0xJIEFwcGxpY2F0aW9uIiAiUHJvY2Vzc2VzIGEgbG9jYWwgQ1NWIGNsZWFuaW5nIHJ1bi4iICJQeXRob24iCiAgICAgICAgfQogICAgICAgIHJlc2VhcmNoZXIgLT4gY2xlYW5lciAiQ2xlYW5zIGV4cGVyaW1lbnQgZGF0YSIKICAgICAgICByZXNlYXJjaGVyIC0+IGNsaSAiQ2xlYW5zIGV4cGVyaW1lbnQgZGF0YSB2aWEgQ0xJIgogICAgfQogICAgdmlld3MgewogICAgICAgIHN5c3RlbUNvbnRleHQgY2xlYW5lciAiU3lzdGVtQ29udGV4dCIgewogICAgICAgICAgICBpbmNsdWRlICoKICAgICAgICAgICAgYXV0b0xheW91dCBscgogICAgICAgIH0KICAgICAgICBjb250YWluZXIgY2xlYW5lciAiQ29udGFpbmVycyIgewogICAgICAgICAgICBpbmNsdWRlICoKICAgICAgICAgICAgYXV0b0xheW91dCBscgogICAgICAgIH0KICAgICAgICB0aGVtZSBkZWZhdWx0CiAgICB9Cn0=",
+    "structurizr.inspection.info" : "0",
+    "structurizr.inspection.ignore" : "0",
+    "structurizr.inspection.warning" : "0"
+  },
+  "views" : {
+    "configuration" : {
+      "styles" : { },
+      "terminology" : { },
+      "themes" : [ "https://static.structurizr.com/themes/default/theme.json" ]
+    },
+    "containerViews" : [ {
+      "automaticLayout" : {
+        "edgeSeparation" : 50,
+        "nodeSeparation" : 50,
+        "rankDirection" : "LeftRight",
+        "rankSeparation" : 100,
+        "vertices" : true
+      },
+      "elements" : [ {
+        "id" : "1",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "3",
+        "x" : 0,
+        "y" : 0
+      } ],
+      "externalSoftwareSystemBoundariesVisible" : false,
+      "key" : "Containers",
+      "name" : "Container View: Research CSV Cleaner",
+      "order" : 2,
+      "relationships" : [ {
+        "id" : "5"
+      } ],
+      "softwareSystemId" : "2"
+    } ],
+    "systemContextViews" : [ {
+      "automaticLayout" : {
+        "edgeSeparation" : 50,
+        "nodeSeparation" : 50,
+        "rankDirection" : "LeftRight",
+        "rankSeparation" : 100,
+        "vertices" : true
+      },
+      "elements" : [ {
+        "id" : "1",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "2",
+        "x" : 0,
+        "y" : 0
+      } ],
+      "enterpriseBoundaryVisible" : true,
+      "key" : "SystemContext",
+      "name" : "System Context View: Research CSV Cleaner",
+      "order" : 1,
+      "relationships" : [ {
+        "id" : "4"
+      } ],
+      "softwareSystemId" : "2"
+    } ]
+  }
+}

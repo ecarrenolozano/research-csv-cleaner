@@ -19,3 +19,6 @@ site/
 .claude/*
 .codex/*
 agent/*
+
+# Structurizr diagrams
+sdlc_docs/02_architecture/diagrams/.structurizr
