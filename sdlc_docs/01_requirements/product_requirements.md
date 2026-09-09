@@ -12,7 +12,7 @@
 
 | Requirement | Requirement status | Stories | Story status | Source | Repository issues |
 |---|---|---|---|---|---|
-| REQ-0001 - Local research CSV cleaning | Approved | US-0001, US-0002, US-0003, US-0004, US-0005 | Approved | `sdlc_docs/00_inception/project_context.md`; stakeholder clarification in chat on 2026-09-09 | Not created |
+| REQ-0001 - Local research CSV cleaning | Approved | US-0001, US-0002, US-0003, US-0004, US-0005 | Approved | `sdlc_docs/00_inception/project_context.md`; stakeholder clarification in chat on 2026-09-09 | Created |
 
 ### Source Statement Coverage Register
 
@@ -46,8 +46,8 @@ Record only atomic capabilities. Every row must reference one or more Source IDs
 - **Source:** `sdlc_docs/00_inception/project_context.md`
 - **Evidence or basis:** Approved Project Context sections 8, 11, 12, and 17; stakeholder clarification in chat on 2026-09-09.
 - **Imported classification:** Not applicable
-- **Repository representation:** Not created
-- **Repository issue:** Not created
+- **Repository representation:** Created
+- **Repository issue:** Created
 - **Description:** The first release must let a researcher clean one local research CSV file by validating one required numeric column, removing rows with invalid values in that column, writing a cleaned CSV file, and reporting how many rows were removed.
 - **Approved by:** Edwin Carreño
 - **Reviewer role or responsibility:** Software Engineer
@@ -60,7 +60,7 @@ Record only atomic capabilities. Every row must reference one or more Source IDs
 - **Source or evidence basis:** CAP-001; approved Project Context section 12.
 - **Covered scope IDs:** CAP-001
 - **Atomicity:** Single observable outcome
-- **Repository issue:** Not created
+- **Repository issue:** Created
 
 As a researcher
 I want the tool to read a local CSV file
@@ -80,7 +80,7 @@ Then the tool reads the CSV file for cleaning.
 - **Source or evidence basis:** CAP-002; approved Project Context section 12; stakeholder clarification in chat on 2026-09-09.
 - **Covered scope IDs:** CAP-002
 - **Atomicity:** Single observable outcome
-- **Repository issue:** Not created
+- **Repository issue:** Created
 
 As a researcher
 I want the tool to validate one required numeric column
@@ -107,7 +107,7 @@ And the tool does not create an output file.
 - **Source or evidence basis:** CAP-003; approved Project Context section 12; stakeholder clarification in chat on 2026-09-09.
 - **Covered scope IDs:** CAP-003
 - **Atomicity:** Single observable outcome
-- **Repository issue:** Not created
+- **Repository issue:** Created
 
 As a researcher
 I want the tool to remove rows with invalid values in the required numeric column
@@ -133,7 +133,7 @@ Then the cleaned output excludes those rows.
 - **Source or evidence basis:** CAP-004; approved Project Context section 12.
 - **Covered scope IDs:** CAP-004
 - **Atomicity:** Single observable outcome
-- **Repository issue:** Not created
+- **Repository issue:** Created
 
 As a researcher
 I want the tool to write a cleaned CSV file
@@ -153,7 +153,7 @@ Then the tool writes a cleaned CSV file.
 - **Source or evidence basis:** CAP-005; approved Project Context section 12.
 - **Covered scope IDs:** CAP-005
 - **Atomicity:** Single observable outcome
-- **Repository issue:** Not created
+- **Repository issue:** Created
 
 As a researcher
 I want the tool to report how many rows were removed

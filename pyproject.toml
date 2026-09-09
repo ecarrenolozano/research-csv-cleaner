@@ -38,6 +38,12 @@ packages = ["src/research_csv_cleaner"]
 addopts = "--cov=research_csv_cleaner --cov-report=term-missing"
 testpaths = ["tests"]
 bdd_features_base_dir = "tests/validation/features"
+markers = [
+  "unit: isolated technical or product unit tests",
+  "integration: collaboration tests across real components",
+  "regression: tests for confirmed defects",
+  "validation: pytest-bdd acceptance scenarios for approved behavior",
+]
 
 [tool.coverage.run]
 branch = true

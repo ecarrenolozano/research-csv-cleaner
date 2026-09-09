@@ -19,6 +19,12 @@
       "skillPath": "skills/c-manage-product-requirements/SKILL.md",
       "computedHash": "80f9054cab2a5b12ea0ab36dd2186d4e5d78fae82c5a89abb906805052476463"
     },
+    "create-github-project-board": {
+      "source": "ecarrenolozano/ai-sdlc-skills",
+      "sourceType": "github",
+      "skillPath": "skills/create-github-project-board/SKILL.md",
+      "computedHash": "30087c0066f5cb76de589f2abb538cdd349700f712e84f6139f787bf395e06a2"
+    },
     "d-design-product-architecture": {
       "source": "ecarrenolozano/ai-sdlc-skills",
       "sourceType": "github",
@@ -29,7 +35,7 @@
       "source": "ecarrenolozano/ai-sdlc-skills",
       "sourceType": "github",
       "skillPath": "skills/e-sync-repository-requirements/SKILL.md",
-      "computedHash": "7916c55e2566b8eea35fd5e143d92037842946b126637f1fd83a46904cc50535"
+      "computedHash": "129c130547ab62cda10326484eacb8cf76d2373ae62d9cb627da042e5455a77f"
     },
     "f-establish-technical-foundation": {
       "source": "ecarrenolozano/ai-sdlc-skills",
