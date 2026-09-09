@@ -16,19 +16,25 @@ uv run ruff format --check .
 uv run mypy src
 ```
 
-## 3. Start documentation locally
+## 3. Run the CLI
+
+```bash
+uv run python -m research_csv_cleaner.cli_application INPUT.csv OUTPUT.csv REQUIRED_COLUMN
+```
+
+## 4. Start documentation locally
 
 ```bash
 uv run mkdocs serve
 ```
 
-## 4. Start the SDLC workflow
+## 5. Start the SDLC workflow
 
 1. Open `sdlc_docs/trace_workflow.md` to identify the current stage and next action.
 2. Begin in `sdlc_docs/00_inception/sources/` by storing the original request evidence.
 3. Continue with the stage guidance in [AI-assisted workflow](workflow.md).
 
-## 5. Repository workflow references
+## 6. Repository workflow references
 
 - Root workflow summary: `WORKFLOW.md`
 - SDLC artifact overview: `sdlc_docs/README.md`

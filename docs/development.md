@@ -21,7 +21,7 @@ uv run pre-commit install
 Run the current CLI entry point from the repository checkout:
 
 ```bash
-uv run python -m research_csv_cleaner.cli_application
+uv run python -m research_csv_cleaner.cli_application INPUT.csv OUTPUT.csv REQUIRED_COLUMN
 ```
 
 The first release is a checkout-based local Python application. Packaging is

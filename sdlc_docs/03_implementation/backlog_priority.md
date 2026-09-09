@@ -14,7 +14,7 @@ commits, or pull requests were changed by this planning document.
 
 | Order | Issue | Title | Current board status | Requirement coverage | Readiness |
 |---|---|---|---|---|---|
-| 1 | #1 | Implement local research CSV cleaning | Product Backlog | REQ-0001; US-0001 through US-0005 | Ready for local implementation proposal |
+| 1 | #1 | Implement local research CSV cleaning | Product Backlog | REQ-0001; US-0001 through US-0005 | Implemented locally; pending review, validation workflow, and remote status decisions |
 
 ## Suggested Implementation Order
 
@@ -48,7 +48,5 @@ commits, or pull requests were changed by this planning document.
 
 ## Next Action
 
-Prepare a local implementation proposal for issue #1. The proposal must define
-the code-level design, test placement, Ping-Pong TDD plan, relevant
-best-practice references, expected local documentation updates, and validation
-commands before any implementation code is written.
+Review the local implementation result for issue #1. Validation, pull request,
+and remote issue or Project status changes require separate workflow approvals.
