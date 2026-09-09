@@ -17,7 +17,7 @@
       "source": "ecarrenolozano/ai-sdlc-skills",
       "sourceType": "github",
       "skillPath": "skills/c-manage-product-requirements/SKILL.md",
-      "computedHash": "9834b120cbe82e393d49d1b822ede433998c26d5697462578164192283b41a9e"
+      "computedHash": "80f9054cab2a5b12ea0ab36dd2186d4e5d78fae82c5a89abb906805052476463"
     },
     "d-design-product-architecture": {
       "source": "ecarrenolozano/ai-sdlc-skills",
@@ -71,7 +71,7 @@
       "source": "ecarrenolozano/ai-sdlc-skills",
       "sourceType": "github",
       "skillPath": "skills/sdlc-orchestrate-workflow/SKILL.md",
-      "computedHash": "66f05f36fb3e3ac4e30cd407e0d9aa267d17b4d8f0e028463446cf39bc4eb9f7"
+      "computedHash": "e4238874ab85a470e396ebb88d0c68a8b620ebb906baa7dd82f6e74735926aa0"
     }
   }
 }
