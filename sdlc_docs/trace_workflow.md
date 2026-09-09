@@ -2,9 +2,9 @@
 
 | Item | Type | Status | Current activity | Evidence | Missing or blocked | Next action |
 |---|---|---|---|---|---|---|
-| Project request | Foundation | Not Started | Request Clarification | — | Informal request not provided | Run a-clarify-project-request |
-| Project context | Foundation | Not Started | — | — | Approved clarified request missing | Run b-form-project-context |
-| Initial requirements | Initial Release | Not Started | — | — | Approved Project Context missing | Run c-manage-product-requirements |
+| Project request | Foundation | Complete | Request Clarification | 00_inception/clarified_project_request.md | None | Run b-form-project-context |
+| Project context | Foundation | Complete | Project Context Formation | 00_inception/project_context.md | None | Run c-manage-product-requirements |
+| Initial requirements | Initial Release | Not Started | Product Requirements Management | 00_inception/project_context.md | Product Requirements have not been created | Run c-manage-product-requirements |
 | Architecture | Initial Release | Not Started | — | — | Approved requirements missing | Run d-design-product-architecture |
 | Repository preparation | Initial Release | Not Started | — | — | Approved architecture missing | Run e-sync-repository-requirements |
 | Technical foundation | Initial Release | Not Started | — | — | Repository preparation incomplete | Run f-establish-technical-foundation |
