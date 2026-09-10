@@ -93,7 +93,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     args = parser.parse_args(argv)
 
     try:
-        removed_count = clean_csv(
+        validation_error_row_count = clean_csv(
             args.input_csv,
             args.output_csv,
             args.required_numeric_column,
@@ -102,7 +102,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         print(str(exc), file=sys.stderr)
         return 1
 
-    print(f"Removed rows: {removed_count}")
+    print(f"Rows containing validation errors: {validation_error_row_count}")
     return 0
 
 

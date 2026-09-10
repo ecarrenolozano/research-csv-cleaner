@@ -47,7 +47,9 @@ def test_cli_writes_resulting_csv_with_all_input_rows_and_reports_invalid_row_co
         {"sample": "c", "measurement": "NaN", "validation_errors": "measurement is NaN"},
         {"sample": "d", "measurement": "5", "validation_errors": ""},
     ]
-    assert "2" in capsys.readouterr().out
+    stdout = capsys.readouterr().out.lower()
+    assert "rows containing validation errors" in stdout
+    assert "2" in stdout
 
 
 @pytest.mark.integration

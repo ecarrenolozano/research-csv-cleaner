@@ -12,6 +12,7 @@ architecture elements. It does not replace the approved C4 architecture baseline
 | #8 - Preserve all input rows | REQ-0002; US-0008 | AE-002 CLI Application; shared validation semantics for AE-003 later | [CLI application code map](containers/cli-application/code-level.md) |
 | #9 - Add validation-error explanations for invalid rows | REQ-0002; US-0009 | AE-002 CLI Application; shared validation semantics for AE-003 later | [CLI application code map](containers/cli-application/code-level.md) |
 | #10 - Write the resulting CSV | REQ-0002; US-0010 | AE-002 CLI Application | [CLI application code map](containers/cli-application/code-level.md) |
+| #12 - Report validation-error row count | REQ-0002; US-0012 | AE-002 CLI Application | [CLI application code map](containers/cli-application/code-level.md) |
 
 ## Container Maps
 

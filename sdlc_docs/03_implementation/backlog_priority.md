@@ -28,12 +28,11 @@ Current local code already provides:
 - detailed `validation_errors` explanations in the resulting CLI CSV for issue
   #9 / US-0009.
 - resulting CSV writing for issue #10 / US-0010.
-- a CLI count message based on the historical removed-row behavior.
+- validation-error row count reporting for issue #12 / US-0012.
 - a Streamlit entry-point shell and runtime dependency.
 
-Current local code does not yet provide CR-0001 behavior for reporting
-validation-error row count with final CLI wording or operating the Streamlit
-upload, selection, preview, count, and download workflow.
+Current local code does not yet provide CR-0001 behavior for operating the
+Streamlit upload, selection, preview, count, and download workflow.
 
 Existing validation feature files and BDD steps are historical REQ-0001
 evidence. They still assert that invalid rows are removed, so they must not be
@@ -66,7 +65,7 @@ explicitly combines or splits scope.
 | #9 | US-0009 - Add validation-error explanations for invalid rows | Implemented locally; unit and CLI integration tests confirm specific `validation_errors` explanations for invalid rows and empty explanations for valid rows. | Ready for later validation. |
 | #10 | US-0010 - Write the resulting CSV | Implemented locally; CLI integration tests confirm the validation run writes a resulting CSV with preserved rows and `validation_errors`. | Ready for later validation. |
 | #11 | US-0011 - Download the resulting CSV | Streamlit download is not implemented. | Ready after Streamlit validation result exists. |
-| #12 | US-0012 - Report validation-error row count | CLI count exists for removed rows, not validation-error rows. | Ready for adaptation. |
+| #12 | US-0012 - Report validation-error row count | Implemented locally; CLI integration tests confirm the success message reports rows containing validation errors. | Ready for later validation. |
 | #13 | US-0013 - Display validation-error row count | Streamlit count display is not implemented. | Ready after Streamlit validation result exists. |
 | #14 | US-0014 - Upload a CSV file through Streamlit | Streamlit shell exists; upload is not implemented. | Ready after shared result behavior is stable. |
 | #15 | US-0015 - Select the numeric column through Streamlit | Streamlit column selection is not implemented. | Ready after upload/read path exists. |
@@ -99,10 +98,10 @@ explicitly combines or splits scope.
    `validation_errors`. CLI integration tests read the resulting CSV back from
    the output path and confirm its contents.
 
-5. **Issue #12 - US-0012 - Report validation-error row count**
+5. **Issue #12 - US-0012 - Report validation-error row count** - locally implemented
 
-   The CLI already reports a count, but the meaning changes from removed rows
-   to rows containing validation errors.
+   The CLI now reports rows containing validation errors instead of using the
+   historical removed-row wording.
 
 6. **Issue #17 - US-0017 - Keep the existing CLI operational**
 
@@ -161,6 +160,6 @@ explicitly combines or splits scope.
 
 ## Next Action
 
-Validate the locally implemented subset for US-0007 through US-0010, or select
-exactly one remaining implementation issue for the next
-`g-implement-repository-work` execution.
+Select issue #17 / US-0017 for the next CLI regression-focused implementation
+execution, or validate the locally implemented subset for US-0007 through
+US-0010 and US-0012.
