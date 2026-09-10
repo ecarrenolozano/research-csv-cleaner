@@ -1,37 +1,30 @@
 Feature: Local research CSV cleaning
 
-  Scenario: CSV input is read
-    Given a local CSV file exists
-    When the researcher runs the tool with that file as input
-    Then the tool reads the CSV file for cleaning
+  # Historical REQ-0001 validation evidence, superseded by CR-0001:
+  # - CSV input was read.
+  # - Required numeric-column validation was applied.
+  # - Missing required numeric column failed with a clear error and no output.
+  # - Invalid rows were removed.
+  # - Supported invalid numeric values were removed.
+  # - A cleaned CSV was written.
+  # - Removed-row count was reported.
 
-  Scenario: Required numeric column validation is applied
-    Given a local CSV file contains the configured required numeric column
-    When the researcher runs the tool
-    Then the tool treats missing values, empty values, values that cannot be parsed as floating-point numbers, NaN values, and infinite values as invalid
+  Scenario: US-0008 invalid rows remain in the resulting CSV
+    Given a CSV file contains rows with invalid values in the selected numeric column
+    When the researcher validates the file
+    Then the resulting CSV contains every input row
 
-  Scenario: Required numeric column is missing
-    Given a local CSV file does not contain the configured required numeric column
-    When the researcher runs the tool
-    Then the tool fails with a clear error message
-    And the tool does not create an output file
+  Scenario: US-0009 invalid rows include validation errors
+    Given a CSV file contains rows with invalid values in the selected numeric column
+    When the researcher validates the file
+    Then each invalid row contains an explanation in the validation_errors column
 
-  Scenario: Invalid rows are removed
-    Given a local CSV file contains rows with invalid values in the required numeric column
-    When the researcher runs the tool
-    Then the cleaned output excludes the rows with invalid values
+  Scenario: US-0009 validation errors explain the specific invalid numeric problem
+    Given a CSV file contains selected-column values that are missing, empty, unparseable as floating-point numbers, NaN, or infinite
+    When the researcher validates the file
+    Then each invalid row's validation_errors value explains the specific invalid numeric problem detected for that row
 
-  Scenario: Supported invalid numeric values are removed
-    Given a local CSV file contains rows where the required numeric column has missing values, empty values, values that cannot be parsed as floating-point numbers, NaN values, or infinite values
-    When the researcher runs the tool
-    Then the cleaned output excludes those rows
-
-  Scenario: Cleaned CSV is written
-    Given the tool has finished cleaning the input CSV
-    When the cleaning run completes
-    Then the tool writes a cleaned CSV file
-
-  Scenario: Removed row count is reported
-    Given the tool has removed rows during cleaning
-    When the cleaning run completes
-    Then the tool reports the number of rows removed
+  Scenario: US-0009 valid rows have no validation errors
+    Given a CSV file contains rows with valid values in the selected numeric column
+    When the researcher validates the file
+    Then each valid row has no error explanation in the validation_errors column

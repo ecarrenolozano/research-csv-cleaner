@@ -8,36 +8,56 @@ from collections.abc import Sequence
 from pathlib import Path
 
 CsvRow = dict[str, str | None]
+VALIDATION_ERRORS_COLUMN = "validation_errors"
 
 
-def is_valid_numeric_value(value: str | None) -> bool:
-    """Return whether a CSV cell contains a finite floating-point value."""
+def validation_error_for_numeric_value(value: str | None, column: str) -> str | None:
+    """Return a specific validation error for one selected numeric-column value."""
     if value is None:
-        return False
+        return f"{column} is missing"
 
     text = value.strip()
     if text == "":
-        return False
+        return f"{column} is empty"
 
     try:
         parsed = float(text)
     except ValueError:
-        return False
+        return f"{column} is not a number"
 
-    return math.isfinite(parsed)
+    if math.isnan(parsed):
+        return f"{column} is NaN"
+
+    if math.isinf(parsed):
+        return f"{column} is infinite"
+
+    return None
+
+
+def is_valid_numeric_value(value: str | None) -> bool:
+    """Return whether a CSV cell contains a finite floating-point value."""
+    return validation_error_for_numeric_value(value, "value") is None
 
 
 def clean_rows(rows: Sequence[CsvRow], required_column: str) -> tuple[list[CsvRow], int]:
-    """Return rows with valid required-column values and the removal count."""
+    """Return annotated rows and the invalid required-column value count."""
     if rows and required_column not in rows[0]:
         raise ValueError(f"Required numeric column is missing: {required_column}")
 
-    clean = [row for row in rows if is_valid_numeric_value(row.get(required_column))]
-    return clean, len(rows) - len(clean)
+    annotated_rows: list[CsvRow] = []
+    invalid_count = 0
+    for row in rows:
+        error = validation_error_for_numeric_value(row.get(required_column), required_column)
+        if error is not None:
+            invalid_count += 1
+
+        annotated_rows.append({**row, VALIDATION_ERRORS_COLUMN: error or ""})
+
+    return annotated_rows, invalid_count
 
 
 def clean_csv(input_path: Path, output_path: Path, required_column: str) -> int:
-    """Clean a CSV file and return the number of removed rows."""
+    """Validate a CSV file and return the invalid selected-column value count."""
     with input_path.open(newline="") as input_file:
         reader = csv.DictReader(input_file)
         fieldnames = reader.fieldnames or []
@@ -46,9 +66,12 @@ def clean_csv(input_path: Path, output_path: Path, required_column: str) -> int:
 
         rows = list(reader)
         clean, removed_count = clean_rows(rows, required_column)
+        output_fieldnames = list(fieldnames)
+        if VALIDATION_ERRORS_COLUMN not in output_fieldnames:
+            output_fieldnames.append(VALIDATION_ERRORS_COLUMN)
 
     with output_path.open("w", newline="") as output_file:
-        writer = csv.DictWriter(output_file, fieldnames=fieldnames)
+        writer = csv.DictWriter(output_file, fieldnames=output_fieldnames)
         writer.writeheader()
         writer.writerows(clean)
 
@@ -57,7 +80,7 @@ def clean_csv(input_path: Path, output_path: Path, required_column: str) -> int:
 
 def build_parser() -> argparse.ArgumentParser:
     """Build the command-line argument parser."""
-    parser = argparse.ArgumentParser(description="Clean a research CSV file.")
+    parser = argparse.ArgumentParser(description="Validate a research CSV file.")
     parser.add_argument("input_csv", type=Path)
     parser.add_argument("output_csv", type=Path)
     parser.add_argument("required_numeric_column")

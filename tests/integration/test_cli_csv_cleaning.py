@@ -21,7 +21,7 @@ def read_csv(path: Path) -> list[dict[str, str]]:
 
 
 @pytest.mark.integration
-def test_cli_writes_cleaned_csv_and_reports_removed_row_count(
+def test_cli_writes_resulting_csv_with_all_input_rows_and_reports_invalid_row_count(
     tmp_path: Path,
     capsys: pytest.CaptureFixture[str],
 ) -> None:
@@ -42,8 +42,10 @@ def test_cli_writes_cleaned_csv_and_reports_removed_row_count(
 
     assert exit_code == 0
     assert read_csv(output_path) == [
-        {"sample": "a", "measurement": "1.25"},
-        {"sample": "d", "measurement": "5"},
+        {"sample": "a", "measurement": "1.25", "validation_errors": ""},
+        {"sample": "b", "measurement": "", "validation_errors": "measurement is empty"},
+        {"sample": "c", "measurement": "NaN", "validation_errors": "measurement is NaN"},
+        {"sample": "d", "measurement": "5", "validation_errors": ""},
     ]
     assert "2" in capsys.readouterr().out
 

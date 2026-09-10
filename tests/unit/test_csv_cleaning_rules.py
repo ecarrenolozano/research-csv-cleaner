@@ -23,7 +23,7 @@ def test_numeric_value_rejects_missing_empty_unparseable_nan_and_infinity(
 
 
 @pytest.mark.unit
-def test_clean_rows_excludes_invalid_required_column_values_and_counts_removed_rows() -> None:
+def test_clean_rows_preserves_invalid_required_column_rows_and_counts_them() -> None:
     rows = [
         {"sample": "a", "measurement": "1.25"},
         {"sample": "b", "measurement": ""},
@@ -33,11 +33,31 @@ def test_clean_rows_excludes_invalid_required_column_values_and_counts_removed_r
 
     clean, removed_count = clean_rows(rows, required_column="measurement")
 
-    assert clean == [
-        {"sample": "a", "measurement": "1.25"},
-        {"sample": "d", "measurement": "5"},
-    ]
+    assert len(clean) == len(rows)
+    assert [row["sample"] for row in clean] == ["a", "b", "c", "d"]
     assert removed_count == 2
+
+
+@pytest.mark.unit
+def test_clean_rows_adds_validation_error_explanations_for_invalid_values() -> None:
+    rows = [
+        {"sample": "valid", "measurement": "42"},
+        {"sample": "missing", "measurement": None},
+        {"sample": "empty", "measurement": ""},
+        {"sample": "text", "measurement": "abc"},
+        {"sample": "nan", "measurement": "NaN"},
+        {"sample": "infinite", "measurement": "inf"},
+    ]
+
+    clean, invalid_count = clean_rows(rows, required_column="measurement")
+
+    assert invalid_count == 5
+    assert clean[0]["validation_errors"] == ""
+    assert clean[1]["validation_errors"] == "measurement is missing"
+    assert clean[2]["validation_errors"] == "measurement is empty"
+    assert clean[3]["validation_errors"] == "measurement is not a number"
+    assert clean[4]["validation_errors"] == "measurement is NaN"
+    assert clean[5]["validation_errors"] == "measurement is infinite"
 
 
 @pytest.mark.unit

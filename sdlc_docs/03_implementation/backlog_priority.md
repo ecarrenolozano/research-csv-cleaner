@@ -24,13 +24,15 @@ Current local code already provides:
 - selected-column presence validation.
 - numeric invalid-value detection for missing, empty, unparseable, NaN, and
   infinite values.
+- row preservation in the resulting CLI CSV for issue #8 / US-0008.
+- detailed `validation_errors` explanations in the resulting CLI CSV for issue
+  #9 / US-0009.
 - a CLI count message based on the historical removed-row behavior.
 - a Streamlit entry-point shell and runtime dependency.
 
-Current local code does not yet provide CR-0001 behavior for preserving invalid
-rows, adding detailed `validation_errors`, reporting validation-error row count,
-or operating the Streamlit upload, selection, preview, count, and download
-workflow.
+Current local code does not yet provide CR-0001 behavior for reporting
+validation-error row count with final CLI wording or operating the Streamlit
+upload, selection, preview, count, and download workflow.
 
 Existing validation feature files and BDD steps are historical REQ-0001
 evidence. They still assert that invalid rows are removed, so they must not be
@@ -59,8 +61,8 @@ explicitly combines or splits scope.
 |---|---|---|---|
 | #6 | US-0006 - Read a CSV file | Existing CLI CSV read path is reusable; Streamlit upload read path still needs adaptation. | Ready as verification/adaptation work. |
 | #7 | US-0007 - Validate one selected numeric column | Numeric classification and missing-column handling mostly exist in CLI code. | Ready as verification/adaptation work. |
-| #8 | US-0008 - Preserve all input rows | Current code conflicts with CR-0001 because invalid rows are filtered out. | Ready for implementation. |
-| #9 | US-0009 - Add validation-error explanations for invalid rows | No `validation_errors` annotation exists. | Ready for implementation. |
+| #8 | US-0008 - Preserve all input rows | Implemented locally; unit and CLI integration tests confirm invalid rows remain in the resulting CSV. | Ready for later validation. |
+| #9 | US-0009 - Add validation-error explanations for invalid rows | Implemented locally; unit and CLI integration tests confirm specific `validation_errors` explanations for invalid rows and empty explanations for valid rows. | Ready for later validation. |
 | #10 | US-0010 - Write the resulting CSV | CSV writing exists but writes historical cleaned output without invalid rows or `validation_errors`. | Ready for adaptation. |
 | #11 | US-0011 - Download the resulting CSV | Streamlit download is not implemented. | Ready after Streamlit validation result exists. |
 | #12 | US-0012 - Report validation-error row count | CLI count exists for removed rows, not validation-error rows. | Ready for adaptation. |
@@ -72,17 +74,17 @@ explicitly combines or splits scope.
 
 ## Suggested Implementation Order
 
-1. **Issue #8 - US-0008 - Preserve all input rows**
+1. **Issue #8 - US-0008 - Preserve all input rows** - locally implemented
 
    This is the core CR-0001 behavior change. The historical implementation
-   removes invalid rows, so this slice should reverse the transformation model
-   before dependent output and reporting work builds on it.
+   removed invalid rows; this slice now preserves every input row before
+   dependent output and reporting work builds on it.
 
-2. **Issue #9 - US-0009 - Add validation-error explanations for invalid rows**
+2. **Issue #9 - US-0009 - Add validation-error explanations for invalid rows** - locally implemented
 
-   Row preservation becomes useful when invalid rows are annotated. This slice
-   should introduce detailed explanations for each invalid numeric problem:
-   missing, empty, unparseable, NaN, and infinite values.
+   Row preservation is now paired with annotations. This slice introduces
+   detailed explanations for each invalid numeric problem: missing, empty,
+   unparseable, NaN, and infinite values.
 
 3. **Issue #7 - US-0007 - Validate one selected numeric column**
 
@@ -157,7 +159,6 @@ explicitly combines or splits scope.
 
 ## Next Action
 
-Select exactly one implementation issue for the next `g-implement-repository-work`
-execution. The recommended first implementation target is issue #8, with a
-proposal that explicitly notes likely follow-on coupling to #9 before any local
-code changes are made.
+Validate the locally implemented subset for US-0008 and US-0009, or select
+exactly one remaining implementation issue for the next
+`g-implement-repository-work` execution.
