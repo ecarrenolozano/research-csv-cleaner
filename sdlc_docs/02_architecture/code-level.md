@@ -8,6 +8,7 @@ architecture elements. It does not replace the approved C4 architecture baseline
 | Issue | Requirement and stories | Architecture element | Code map |
 |---|---|---|---|
 | #1 - Implement local research CSV cleaning | REQ-0001; US-0001 through US-0005 | AE-002 CLI Application | [CLI application code map](containers/cli-application/code-level.md) |
+| #7 - Validate one selected numeric column | REQ-0002; US-0007 | AE-002 CLI Application; shared validation semantics for AE-003 later | [CLI application code map](containers/cli-application/code-level.md) |
 | #8 - Preserve all input rows | REQ-0002; US-0008 | AE-002 CLI Application; shared validation semantics for AE-003 later | [CLI application code map](containers/cli-application/code-level.md) |
 | #9 - Add validation-error explanations for invalid rows | REQ-0002; US-0009 | AE-002 CLI Application; shared validation semantics for AE-003 later | [CLI application code map](containers/cli-application/code-level.md) |
 

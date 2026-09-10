@@ -23,7 +23,7 @@ Current local code already provides:
 - CSV reading and CSV writing for local file paths.
 - selected-column presence validation.
 - numeric invalid-value detection for missing, empty, unparseable, NaN, and
-  infinite values.
+  infinite values for issue #7 / US-0007.
 - row preservation in the resulting CLI CSV for issue #8 / US-0008.
 - detailed `validation_errors` explanations in the resulting CLI CSV for issue
   #9 / US-0009.
@@ -60,7 +60,7 @@ explicitly combines or splits scope.
 | Issue | Title | Current implementation impact | Readiness |
 |---|---|---|---|
 | #6 | US-0006 - Read a CSV file | Existing CLI CSV read path is reusable; Streamlit upload read path still needs adaptation. | Ready as verification/adaptation work. |
-| #7 | US-0007 - Validate one selected numeric column | Numeric classification and missing-column handling mostly exist in CLI code. | Ready as verification/adaptation work. |
+| #7 | US-0007 - Validate one selected numeric column | Implemented locally; unit and CLI integration tests confirm selected-column invalid-value classification and missing-column failure without output creation. | Ready for later validation. |
 | #8 | US-0008 - Preserve all input rows | Implemented locally; unit and CLI integration tests confirm invalid rows remain in the resulting CSV. | Ready for later validation. |
 | #9 | US-0009 - Add validation-error explanations for invalid rows | Implemented locally; unit and CLI integration tests confirm specific `validation_errors` explanations for invalid rows and empty explanations for valid rows. | Ready for later validation. |
 | #10 | US-0010 - Write the resulting CSV | CSV writing exists but writes historical cleaned output without invalid rows or `validation_errors`. | Ready for adaptation. |
@@ -86,11 +86,11 @@ explicitly combines or splits scope.
    detailed explanations for each invalid numeric problem: missing, empty,
    unparseable, NaN, and infinite values.
 
-3. **Issue #7 - US-0007 - Validate one selected numeric column**
+3. **Issue #7 - US-0007 - Validate one selected numeric column** - locally implemented
 
-   Existing numeric classification should be verified and adapted to feed the
-   new explanation-producing validation result. This is not a from-scratch
-   implementation.
+   Existing numeric classification and selected-column presence handling already
+   cover this slice in the CLI path. Unit and CLI integration tests confirm the
+   approved invalid numeric classes and missing-column failure behavior.
 
 4. **Issue #10 - US-0010 - Write the resulting CSV**
 
@@ -159,6 +159,6 @@ explicitly combines or splits scope.
 
 ## Next Action
 
-Validate the locally implemented subset for US-0008 and US-0009, or select
-exactly one remaining implementation issue for the next
+Validate the locally implemented subset for US-0007, US-0008, and US-0009, or
+select exactly one remaining implementation issue for the next
 `g-implement-repository-work` execution.

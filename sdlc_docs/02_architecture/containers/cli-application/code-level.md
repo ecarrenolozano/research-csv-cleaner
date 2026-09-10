@@ -3,9 +3,9 @@
 ## Scope
 
 This map covers issue #1, which implements historical REQ-0001 and US-0001
-through US-0005, issue #8, which implements REQ-0002 / US-0008, and issue #9,
-which implements REQ-0002 / US-0009 inside AE-002, the CLI Application
-container.
+through US-0005, issue #7, which implements REQ-0002 / US-0007, issue #8,
+which implements REQ-0002 / US-0008, and issue #9, which implements
+REQ-0002 / US-0009 inside AE-002, the CLI Application container.
 
 ## Module Map
 
@@ -17,10 +17,10 @@ container.
 
 | Function | Responsibility | Approved behavior |
 |---|---|---|
-| `validation_error_for_numeric_value(value, column)` | Return no error for finite floats; otherwise return a specific selected-column explanation for missing, empty, unparseable, NaN, or infinite values. | US-0009 |
+| `validation_error_for_numeric_value(value, column)` | Return no error for finite floats; otherwise return a specific selected-column explanation for missing, empty, unparseable, NaN, or infinite values. | US-0007, US-0009 |
 | `is_valid_numeric_value(value)` | Classify one selected-column cell as valid only when it parses to a finite float. | US-0002, US-0003, US-0007 |
-| `clean_rows(rows, required_column)` | Preserve all in-memory CSV rows, populate `validation_errors`, and count invalid selected-column values. | US-0008, US-0009; supports later US-0012 |
-| `clean_csv(input_path, output_path, required_column)` | Read CSV input, verify the selected column before output creation, write the resulting CSV with all rows preserved and `validation_errors` included, and return the invalid-row count. | US-0001, US-0002, US-0004, US-0008, US-0009 |
+| `clean_rows(rows, required_column)` | Validate one selected numeric column, preserve all in-memory CSV rows, populate `validation_errors`, and count invalid selected-column values. | US-0007, US-0008, US-0009; supports later US-0012 |
+| `clean_csv(input_path, output_path, required_column)` | Read CSV input, verify the selected column before output creation, validate that column, write the resulting CSV with all rows preserved and `validation_errors` included, and return the invalid-row count. | US-0001, US-0002, US-0004, US-0007, US-0008, US-0009 |
 | `build_parser()` | Define the minimal three-argument CLI. | DEC-001 |
 | `main(argv)` | Execute the CLI workflow, print the result or error, and return an exit code. | DEC-001, US-0002, US-0005 |
 
