@@ -24,7 +24,13 @@ Run the current CLI entry point from the repository checkout:
 uv run python -m research_csv_cleaner.cli_application INPUT.csv OUTPUT.csv REQUIRED_COLUMN
 ```
 
-The first release is a checkout-based local Python application. Packaging is
+Run the local Streamlit interface shell from the repository checkout:
+
+```bash
+uv run streamlit run src/research_csv_cleaner/streamlit_interface.py
+```
+
+This project is a checkout-based local Python application. Packaging is
 validated with a wheel build, but no standalone installer or deployed service is
 part of the approved architecture.
 

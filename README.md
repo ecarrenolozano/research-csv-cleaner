@@ -45,6 +45,20 @@ uv sync --all-groups
 uv run pre-commit install
 ```
 
+## Local execution
+
+Run the CLI from the repository checkout:
+
+```bash
+uv run python -m research_csv_cleaner.cli_application INPUT.csv OUTPUT.csv REQUIRED_COLUMN
+```
+
+Run the local Streamlit interface shell:
+
+```bash
+uv run streamlit run src/research_csv_cleaner/streamlit_interface.py
+```
+
 ## Updating Agent Skills
 
 To update the AI SDLC workflow skills, run from the project root:
