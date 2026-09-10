@@ -27,6 +27,7 @@ Current local code already provides:
 - row preservation in the resulting CLI CSV for issue #8 / US-0008.
 - detailed `validation_errors` explanations in the resulting CLI CSV for issue
   #9 / US-0009.
+- resulting CSV writing for issue #10 / US-0010.
 - a CLI count message based on the historical removed-row behavior.
 - a Streamlit entry-point shell and runtime dependency.
 
@@ -63,7 +64,7 @@ explicitly combines or splits scope.
 | #7 | US-0007 - Validate one selected numeric column | Implemented locally; unit and CLI integration tests confirm selected-column invalid-value classification and missing-column failure without output creation. | Ready for later validation. |
 | #8 | US-0008 - Preserve all input rows | Implemented locally; unit and CLI integration tests confirm invalid rows remain in the resulting CSV. | Ready for later validation. |
 | #9 | US-0009 - Add validation-error explanations for invalid rows | Implemented locally; unit and CLI integration tests confirm specific `validation_errors` explanations for invalid rows and empty explanations for valid rows. | Ready for later validation. |
-| #10 | US-0010 - Write the resulting CSV | CSV writing exists but writes historical cleaned output without invalid rows or `validation_errors`. | Ready for adaptation. |
+| #10 | US-0010 - Write the resulting CSV | Implemented locally; CLI integration tests confirm the validation run writes a resulting CSV with preserved rows and `validation_errors`. | Ready for later validation. |
 | #11 | US-0011 - Download the resulting CSV | Streamlit download is not implemented. | Ready after Streamlit validation result exists. |
 | #12 | US-0012 - Report validation-error row count | CLI count exists for removed rows, not validation-error rows. | Ready for adaptation. |
 | #13 | US-0013 - Display validation-error row count | Streamlit count display is not implemented. | Ready after Streamlit validation result exists. |
@@ -92,10 +93,11 @@ explicitly combines or splits scope.
    cover this slice in the CLI path. Unit and CLI integration tests confirm the
    approved invalid numeric classes and missing-column failure behavior.
 
-4. **Issue #10 - US-0010 - Write the resulting CSV**
+4. **Issue #10 - US-0010 - Write the resulting CSV** - locally implemented
 
-   CSV writing already exists, but it must write the CR-0001 result: all input
-   rows plus `validation_errors`.
+   The CLI path writes the CR-0001 result with all input rows and
+   `validation_errors`. CLI integration tests read the resulting CSV back from
+   the output path and confirm its contents.
 
 5. **Issue #12 - US-0012 - Report validation-error row count**
 
@@ -159,6 +161,6 @@ explicitly combines or splits scope.
 
 ## Next Action
 
-Validate the locally implemented subset for US-0007, US-0008, and US-0009, or
-select exactly one remaining implementation issue for the next
+Validate the locally implemented subset for US-0007 through US-0010, or select
+exactly one remaining implementation issue for the next
 `g-implement-repository-work` execution.

@@ -39,3 +39,8 @@ Feature: Local research CSV cleaning
     Given a CSV file contains rows with valid values in the selected numeric column
     When the researcher validates the file
     Then each valid row has no error explanation in the validation_errors column
+
+  Scenario: US-0010 resulting CSV is written
+    Given a CSV file is available for validation
+    When the researcher validates the file
+    Then the tool writes a resulting CSV file

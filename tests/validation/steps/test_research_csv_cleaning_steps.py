@@ -102,6 +102,14 @@ def test_valid_rows_have_no_validation_errors() -> None:
     pass
 
 
+@scenario(
+    "../features/research_csv_cleaning.feature",
+    "US-0010 resulting CSV is written",
+)
+def test_resulting_csv_is_written() -> None:
+    pass
+
+
 @given("a CSV file contains rows with invalid values in the selected numeric column")
 def csv_file_contains_invalid_selected_column_values(context: dict[str, Any]) -> None:
     create_mixed_input(context)
@@ -124,6 +132,15 @@ def csv_file_contains_valid_selected_column_values(context: dict[str, Any]) -> N
             {"sample": "valid-one", context["required_column"]: "1.25"},
             {"sample": "valid-two", context["required_column"]: "5"},
         ],
+    )
+
+
+@given("a CSV file is available for validation")
+def csv_file_is_available_for_validation(context: dict[str, Any]) -> None:
+    write_csv(
+        context["input_path"],
+        ["sample", context["required_column"]],
+        [{"sample": "valid-one", context["required_column"]: "1.25"}],
     )
 
 
@@ -217,3 +234,18 @@ def valid_rows_have_no_validation_errors(context: dict[str, Any]) -> None:
 
     assert context["exit_code"] == 0
     assert [row["validation_errors"] for row in rows] == ["", ""]
+
+
+@then("the tool writes a resulting CSV file")
+def tool_writes_resulting_csv_file(context: dict[str, Any]) -> None:
+    rows = read_csv(context["output_path"])
+
+    assert context["exit_code"] == 0
+    assert context["output_path"].is_file()
+    assert rows == [
+        {
+            "sample": "valid-one",
+            context["required_column"]: "1.25",
+            "validation_errors": "",
+        },
+    ]
