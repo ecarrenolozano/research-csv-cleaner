@@ -58,6 +58,22 @@ def create_mixed_input(context: dict[str, Any]) -> None:
 
 @scenario(
     "../features/research_csv_cleaning.feature",
+    "US-0007 selected numeric column validation is applied",
+)
+def test_selected_numeric_column_validation_is_applied() -> None:
+    pass
+
+
+@scenario(
+    "../features/research_csv_cleaning.feature",
+    "US-0007 selected numeric column is missing",
+)
+def test_selected_numeric_column_is_missing() -> None:
+    pass
+
+
+@scenario(
+    "../features/research_csv_cleaning.feature",
     "US-0008 invalid rows remain in the resulting CSV",
 )
 def test_invalid_rows_remain_in_resulting_csv() -> None:
@@ -111,6 +127,15 @@ def csv_file_contains_valid_selected_column_values(context: dict[str, Any]) -> N
     )
 
 
+@given("a CSV file does not contain the selected numeric column")
+def csv_file_does_not_contain_selected_numeric_column(context: dict[str, Any]) -> None:
+    write_csv(
+        context["input_path"],
+        ["sample", "notes"],
+        [{"sample": "missing-column", "notes": "measurement unavailable"}],
+    )
+
+
 @when("the researcher validates the file")
 def researcher_validates_the_file(
     context: dict[str, Any],
@@ -133,6 +158,32 @@ def resulting_csv_contains_every_input_row(context: dict[str, Any]) -> None:
         "infinite",
         "valid-two",
     ]
+
+
+@then("the tool treats those selected-column values as invalid")
+def selected_column_values_are_treated_as_invalid(context: dict[str, Any]) -> None:
+    rows = read_csv(context["output_path"])
+    errors_by_sample = {row["sample"]: row["validation_errors"] for row in rows}
+
+    assert context["exit_code"] == 0
+    assert errors_by_sample["missing"] == "measurement is empty"
+    assert errors_by_sample["text"] == "measurement is not a number"
+    assert errors_by_sample["nan"] == "measurement is NaN"
+    assert errors_by_sample["infinite"] == "measurement is infinite"
+
+
+@then("the tool fails with a clear missing-column error")
+def tool_fails_with_clear_missing_column_error(context: dict[str, Any]) -> None:
+    error_output = context["captured"].err
+
+    assert context["exit_code"] != 0
+    assert context["required_column"] in error_output
+    assert "missing" in error_output.lower()
+
+
+@then("the tool does not create a resulting CSV")
+def tool_does_not_create_resulting_csv(context: dict[str, Any]) -> None:
+    assert not context["output_path"].exists()
 
 
 @then("each invalid row contains an explanation in the validation_errors column")

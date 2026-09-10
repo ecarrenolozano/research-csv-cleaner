@@ -9,6 +9,17 @@ Feature: Local research CSV cleaning
   # - A cleaned CSV was written.
   # - Removed-row count was reported.
 
+  Scenario: US-0007 selected numeric column validation is applied
+    Given a CSV file contains selected-column values that are missing, empty, unparseable as floating-point numbers, NaN, or infinite
+    When the researcher validates the file
+    Then the tool treats those selected-column values as invalid
+
+  Scenario: US-0007 selected numeric column is missing
+    Given a CSV file does not contain the selected numeric column
+    When the researcher validates the file
+    Then the tool fails with a clear missing-column error
+    And the tool does not create a resulting CSV
+
   Scenario: US-0008 invalid rows remain in the resulting CSV
     Given a CSV file contains rows with invalid values in the selected numeric column
     When the researcher validates the file
