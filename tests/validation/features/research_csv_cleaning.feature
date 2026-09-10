@@ -14,6 +14,11 @@ Feature: Local research CSV cleaning
     When the researcher validates the file
     Then the tool treats those selected-column values as invalid
 
+  Scenario: US-0006 CSV input is read for validation
+    Given a CSV file is available for validation
+    When the researcher validates the file
+    Then the tool reads the CSV file for validation
+
   Scenario: US-0007 selected numeric column is missing
     Given a CSV file does not contain the selected numeric column
     When the researcher validates the file
@@ -44,3 +49,38 @@ Feature: Local research CSV cleaning
     Given a CSV file is available for validation
     When the researcher validates the file
     Then the tool writes a resulting CSV file
+
+  Scenario: US-0011 resulting CSV is downloaded
+    Given validation has completed in the Streamlit interface
+    When the researcher downloads the resulting CSV
+    Then the interface provides the resulting CSV for download
+
+  Scenario: US-0012 validation-error row count is reported
+    Given the CLI has detected rows with validation errors
+    When the validation run completes
+    Then the CLI reports the number of rows containing validation errors
+
+  Scenario: US-0013 validation-error row count is displayed
+    Given validation has completed in the Streamlit interface
+    When the validated data is available
+    Then the interface displays the number of rows containing validation errors
+
+  Scenario: US-0014 CSV file is uploaded
+    Given the Streamlit interface is open
+    When the researcher uploads a CSV file
+    Then the interface accepts the CSV file for validation
+
+  Scenario: US-0015 numeric column is selected
+    Given a CSV file is uploaded in the Streamlit interface
+    When the researcher selects a numeric column
+    Then the interface uses that selected column for validation
+
+  Scenario: US-0016 validated data is previewed
+    Given validation has completed in the Streamlit interface
+    When the validated data is available
+    Then the interface previews the validated data
+
+  Scenario: US-0017 existing CLI still runs
+    Given a researcher provides the existing CLI inputs
+    When the researcher runs the CLI
+    Then the CLI validates the CSV and produces the resulting CSV
