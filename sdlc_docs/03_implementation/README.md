@@ -1,6 +1,9 @@
 # Implementation
 
 This directory tracks implementation planning and execution status for approved work.
+Planning may include implementation-ready work, reuse/adaptation work, and
+verification-only work when a later approved increment supersedes earlier
+behavior.
 
 **Primary skill:** `g-implement-repository-work`
 
