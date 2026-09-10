@@ -29,10 +29,15 @@ Current local code already provides:
   #9 / US-0009.
 - resulting CSV writing for issue #10 / US-0010.
 - validation-error row count reporting for issue #12 / US-0012.
-- a Streamlit entry-point shell and runtime dependency.
+- CLI continuity for issue #17 / US-0017.
+- Streamlit CSV upload and read behavior for issues #14 and #6.
+- Streamlit numeric-column selection for issue #15.
+- Streamlit validated-data preview for issue #16.
+- Streamlit validation-error row count display for issue #13.
+- Streamlit resulting CSV download for issue #11.
 
-Current local code does not yet provide CR-0001 behavior for operating the
-Streamlit upload, selection, preview, count, and download workflow.
+Current local code provides the planned CR-0001 child-story implementation
+scope. Product-level BDD validation remains a separate downstream workflow gate.
 
 Existing validation feature files and BDD steps are historical REQ-0001
 evidence. They still assert that invalid rows are removed, so they must not be
@@ -59,18 +64,18 @@ explicitly combines or splits scope.
 
 | Issue | Title | Current implementation impact | Readiness |
 |---|---|---|---|
-| #6 | US-0006 - Read a CSV file | Existing CLI CSV read path is reusable; Streamlit upload read path still needs adaptation. | Ready as verification/adaptation work. |
+| #6 | US-0006 - Read a CSV file | Implemented locally; CLI and Streamlit paths read CSV input for validation. | Ready for later validation. |
 | #7 | US-0007 - Validate one selected numeric column | Implemented locally; unit and CLI integration tests confirm selected-column invalid-value classification and missing-column failure without output creation. | Ready for later validation. |
 | #8 | US-0008 - Preserve all input rows | Implemented locally; unit and CLI integration tests confirm invalid rows remain in the resulting CSV. | Ready for later validation. |
 | #9 | US-0009 - Add validation-error explanations for invalid rows | Implemented locally; unit and CLI integration tests confirm specific `validation_errors` explanations for invalid rows and empty explanations for valid rows. | Ready for later validation. |
 | #10 | US-0010 - Write the resulting CSV | Implemented locally; CLI integration tests confirm the validation run writes a resulting CSV with preserved rows and `validation_errors`. | Ready for later validation. |
-| #11 | US-0011 - Download the resulting CSV | Streamlit download is not implemented. | Ready after Streamlit validation result exists. |
+| #11 | US-0011 - Download the resulting CSV | Implemented locally; Streamlit provides a resulting CSV download after validation. | Ready for later validation. |
 | #12 | US-0012 - Report validation-error row count | Implemented locally; CLI integration tests confirm the success message reports rows containing validation errors. | Ready for later validation. |
-| #13 | US-0013 - Display validation-error row count | Streamlit count display is not implemented. | Ready after Streamlit validation result exists. |
-| #14 | US-0014 - Upload a CSV file through Streamlit | Streamlit shell exists; upload is not implemented. | Ready after shared result behavior is stable. |
-| #15 | US-0015 - Select the numeric column through Streamlit | Streamlit column selection is not implemented. | Ready after upload/read path exists. |
-| #16 | US-0016 - Preview validated data through Streamlit | Streamlit preview is not implemented. | Ready after validation result exists. |
-| #17 | US-0017 - Keep the existing CLI operational | CLI exists but must preserve the accepted command shape while changing output semantics. | Ready for regression-focused adaptation. |
+| #13 | US-0013 - Display validation-error row count | Implemented locally; Streamlit displays rows containing validation errors after validation. | Ready for later validation. |
+| #14 | US-0014 - Upload a CSV file through Streamlit | Implemented locally; Streamlit accepts CSV uploads for validation. | Ready for later validation. |
+| #15 | US-0015 - Select the numeric column through Streamlit | Implemented locally; Streamlit offers uploaded CSV headers for selected-column validation. | Ready for later validation. |
+| #16 | US-0016 - Preview validated data through Streamlit | Implemented locally; Streamlit previews validated rows with `validation_errors`. | Ready for later validation. |
+| #17 | US-0017 - Keep the existing CLI operational | Implemented locally; CLI integration tests confirm the existing command shape still validates and writes resulting CSV output. | Ready for later validation. |
 
 ## Suggested Implementation Order
 
@@ -103,41 +108,38 @@ explicitly combines or splits scope.
    The CLI now reports rows containing validation errors instead of using the
    historical removed-row wording.
 
-6. **Issue #17 - US-0017 - Keep the existing CLI operational**
+6. **Issue #17 - US-0017 - Keep the existing CLI operational** - locally implemented
 
-   After the shared transformation and count semantics are adapted, the CLI
-   should be regression-checked against the existing command shape and CR-0001
+   The existing CLI command shape remains operational while producing CR-0001
    output behavior.
 
-7. **Issue #6 - US-0006 - Read a CSV file**
+7. **Issue #6 - US-0006 - Read a CSV file** - locally implemented
 
-   CSV reading exists for the CLI. Handle this as verification and reuse work,
-   with any needed adapter for uploaded Streamlit files.
+   CSV input is read through the existing CLI path and the Streamlit uploaded
+   file path.
 
-8. **Issue #14 - US-0014 - Upload a CSV file through Streamlit**
+8. **Issue #14 - US-0014 - Upload a CSV file through Streamlit** - locally implemented
 
-   The Streamlit shell and dependency exist. Upload can now attach to the shared
-   CSV read/validation flow.
+   The Streamlit interface accepts CSV files through a file uploader.
 
-9. **Issue #15 - US-0015 - Select the numeric column through Streamlit**
+9. **Issue #15 - US-0015 - Select the numeric column through Streamlit** - locally implemented
 
-   Column selection depends on uploaded CSV headers and should reuse the same
-   selected-column validation semantics as the CLI.
+   The Streamlit interface lists uploaded CSV headers for numeric-column
+   selection.
 
-10. **Issue #16 - US-0016 - Preview validated data through Streamlit**
+10. **Issue #16 - US-0016 - Preview validated data through Streamlit** - locally implemented
 
-    Preview depends on the CR-0001 validated result produced by the shared
-    transformation.
+    The Streamlit interface previews validated rows after applying shared
+    validation semantics.
 
-11. **Issue #13 - US-0013 - Display validation-error row count**
+11. **Issue #13 - US-0013 - Display validation-error row count** - locally implemented
 
-    Count display should use the same row-count semantics introduced for the
-    CLI: rows containing validation errors, not removed rows.
+    The Streamlit interface displays the number of rows containing validation
+    errors.
 
-12. **Issue #11 - US-0011 - Download the resulting CSV**
+12. **Issue #11 - US-0011 - Download the resulting CSV** - locally implemented
 
-    Download should come after the Streamlit interface can produce the validated
-    result to preview and count.
+    The Streamlit interface provides the validated result as downloadable CSV.
 
 ## Dependency And Risk Notes
 
@@ -160,6 +162,4 @@ explicitly combines or splits scope.
 
 ## Next Action
 
-Select issue #17 / US-0017 for the next CLI regression-focused implementation
-execution, or validate the locally implemented subset for US-0007 through
-US-0010 and US-0012.
+Continue with CR-0001 user-story validation for US-0006 through US-0017.

@@ -40,7 +40,7 @@ def test_clean_rows_preserves_invalid_required_column_rows_and_counts_them() -> 
 
 @pytest.mark.unit
 def test_clean_rows_adds_validation_error_explanations_for_invalid_values() -> None:
-    rows = [
+    rows: list[dict[str, str | None]] = [
         {"sample": "valid", "measurement": "42"},
         {"sample": "missing", "measurement": None},
         {"sample": "empty", "measurement": ""},

@@ -4,10 +4,11 @@ import argparse
 import csv
 import math
 import sys
-from collections.abc import Sequence
+from collections.abc import Mapping, Sequence
 from pathlib import Path
 
 CsvRow = dict[str, str | None]
+CsvInputRow = Mapping[str, str | None]
 VALIDATION_ERRORS_COLUMN = "validation_errors"
 
 
@@ -39,7 +40,7 @@ def is_valid_numeric_value(value: str | None) -> bool:
     return validation_error_for_numeric_value(value, "value") is None
 
 
-def clean_rows(rows: Sequence[CsvRow], required_column: str) -> tuple[list[CsvRow], int]:
+def clean_rows(rows: Sequence[CsvInputRow], required_column: str) -> tuple[list[CsvRow], int]:
     """Return annotated rows and the invalid required-column value count."""
     if rows and required_column not in rows[0]:
         raise ValueError(f"Required numeric column is missing: {required_column}")
@@ -51,7 +52,7 @@ def clean_rows(rows: Sequence[CsvRow], required_column: str) -> tuple[list[CsvRo
         if error is not None:
             invalid_count += 1
 
-        annotated_rows.append({**row, VALIDATION_ERRORS_COLUMN: error or ""})
+        annotated_rows.append({**dict(row), VALIDATION_ERRORS_COLUMN: error or ""})
 
     return annotated_rows, invalid_count
 
