@@ -35,13 +35,13 @@
       "source": "ecarrenolozano/ai-sdlc-skills",
       "sourceType": "github",
       "skillPath": "skills/e-sync-repository-requirements/SKILL.md",
-      "computedHash": "04842992281ca029ded9663619bc9689a4f597c5a98a168fb51759af92e32336"
+      "computedHash": "a00314a4638b9cded6c5b7a62cd9764a6668d56c04e6018ee9ac5044ca35bacc"
     },
     "f-establish-technical-foundation": {
       "source": "ecarrenolozano/ai-sdlc-skills",
       "sourceType": "github",
       "skillPath": "skills/f-establish-technical-foundation/SKILL.md",
-      "computedHash": "879e0ec16f7cae3d73399d58a637739b3d243729fbd8ffc254028b79a4c607ed"
+      "computedHash": "cbd92c55c028dd4d9b9cb1b4c053ede45b83b322b8404b99d3da01f047bd823a"
     },
     "g-implement-repository-work": {
       "source": "ecarrenolozano/ai-sdlc-skills",
@@ -77,7 +77,7 @@
       "source": "ecarrenolozano/ai-sdlc-skills",
       "sourceType": "github",
       "skillPath": "skills/sdlc-orchestrate-workflow/SKILL.md",
-      "computedHash": "58ac537a0d64b5d05427d2dae08c496335c96efb158ecfaad5c2776cee803e86"
+      "computedHash": "9088d7f17a0a0dc1b05de422f7ac2d255f5bf136cefccc415c945beec87ebabe"
     }
   }
 }
