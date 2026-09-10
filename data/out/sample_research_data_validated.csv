@@ -1,0 +1,11 @@
+sample_id,temperature,pressure,ph,location,replicate,validation_errors
+S001,21.5,1012.4,7.1,Heidelberg,1,
+S002,18.2,1008.9,6.8,Göttingen,1,
+S003,invalid,1011.2,7.0,Dresden,1,temperature is not a number
+S004,,1009.5,7.2,Heidelberg,2,temperature is empty
+S005,NaN,1010.1,6.9,Göttingen,2,temperature is NaN
+S006,inf,1007.8,7.3,Dresden,2,temperature is infinite
+S007,-3.5,bad,7.1,Berlin,1,
+S008,24.0,NaN,not-a-number,Heidelberg,3,
+S009,19.7,1006.2,,Leipzig,1,
+S010,22.1,1005.0,8.1,Munich,2,
